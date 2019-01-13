@@ -8,7 +8,8 @@ import javax.persistence.*;
 @Entity
 @Table(schema = "posting")
 public class Post {
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posting.post_id_seq")
+    @SequenceGenerator(name = "post_id_gen", schema = "posting", sequenceName = "post_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_id_seq")
     @Id
     private Long id;
     @Version
