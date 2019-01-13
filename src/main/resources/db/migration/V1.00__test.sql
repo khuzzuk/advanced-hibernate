@@ -1,0 +1,12 @@
+CREATE SCHEMA posting;
+
+CREATE TABLE posting.post (
+id BIGSERIAL PRIMARY KEY,
+version BIGINT,
+post VARCHAR(255)
+);
+
+CREATE TABLE posting.tag(
+id BIGSERIAL PRIMARY KEY,
+name VARCHAR(255)
+);
