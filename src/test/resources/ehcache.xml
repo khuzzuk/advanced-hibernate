@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <defaultCache eternal="false" maxEntriesLocalHeap="10"/>
+    <cache
+            name="com.example.advancedhibernate.db.Post"
+            maxEntriesLocalHeap="10"
+            timeToIdleSeconds="3"
+            timeToLiveSeconds="6">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+</ehcache>

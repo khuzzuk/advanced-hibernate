@@ -30,6 +30,9 @@ dependencies {
     implementation('org.flywaydb:flyway-core')
     implementation('org.springframework.data:spring-data-rest-hal-browser')
 //    compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.3.7.Final'
+//    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '5.3.7.Final' //Deprecated, use hibernate-jcache with ehcache3
+    compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.3.7.Final'
+    compile group: 'org.ehcache', name: 'ehcache', version: '3.6.3'
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
     runtimeOnly('org.postgresql:postgresql')
     compileOnly('org.projectlombok:lombok')

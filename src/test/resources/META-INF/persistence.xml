@@ -16,7 +16,8 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/posts"/>
             <property name="javax.persistence.jdbc.user" value="post"/>
             <property name="javax.persistence.jdbc.password" value="post"/>
-            <property name="hibernate.connection.provider_class" value="org.vibur.dbcp.integration.ViburDBCPConnectionProvider" />
+            <property name="hibernate.connection.provider_class"
+                      value="org.vibur.dbcp.integration.ViburDBCPConnectionProvider"/>
         </properties>
     </persistence-unit>
     <persistence-unit name="jndi.clean.example">
@@ -28,6 +29,28 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/posts"/>
+            <property name="javax.persistence.jdbc.user" value="post"/>
+            <property name="javax.persistence.jdbc.password" value="post"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="jndi.ehcache.example">
+        <description>JPA</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.example.advancedhibernate.db.Post</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.jcache.JCacheRegionFactory"/>
+            <property name="hibernate.javax.cache.provider" value="org.ehcache.jsr107.EhcacheCachingProvider"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+            <property name="net.sf.ehcache.configurationResourceName" value="ehcache.xml"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/posts"/>
             <property name="javax.persistence.jdbc.user" value="post"/>
