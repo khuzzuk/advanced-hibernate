@@ -1,12 +1,9 @@
 package com.example.advancedhibernate
 
 import com.example.advancedhibernate.db.Post
-import org.springframework.cache.CacheManager
 import spock.lang.Specification
 
-import javax.persistence.Cache
 import javax.persistence.Persistence
-import javax.persistence.Query
 
 class EhCacheSpec extends Specification {
     def "check cache usage"() {

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import java.util.Set;
 
 @Getter
@@ -22,18 +22,16 @@ import java.util.Set;
 @Entity
 @Table(schema = "posting")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Post extends BaseEntity {
-    @SequenceGenerator(name = "post_id_gen", schema = "posting", sequenceName = "post_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_id_gen")
+public class Message extends BaseEntity {
+    @SequenceGenerator(name = "message_id_gen", schema = "posting", sequenceName = "message_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_id_gen")
     @Id
     private Long id;
-    @Version
-    private Long version;
-    private String post;
-    @ManyToMany(fetch = FetchType.EAGER)
+    private String content;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(schema = "posting",
-            name = "post_tag",
-            joinColumns = @JoinColumn(name = "post_id"),
+            name = "message_tag",
+            joinColumns = @JoinColumn(name = "message_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> tags;
 }
