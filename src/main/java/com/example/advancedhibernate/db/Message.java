@@ -2,7 +2,8 @@ package com.example.advancedhibernate.db;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,12 +22,13 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(schema = "posting")
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Indexed
 public class Message extends BaseEntity {
     @SequenceGenerator(name = "message_id_gen", schema = "posting", sequenceName = "message_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_id_gen")
     @Id
     private Long id;
+    @Field
     private String content;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(schema = "posting",

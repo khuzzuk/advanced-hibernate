@@ -11,7 +11,7 @@ class EhCacheSpec extends Specification {
         def factory = Persistence.createEntityManagerFactory("jndi.ehcache.example")
 
         Post post = new Post()
-        post.post = "Post"
+        post.post = "Post1"
 
         when:
         def entityManager = factory.createEntityManager()

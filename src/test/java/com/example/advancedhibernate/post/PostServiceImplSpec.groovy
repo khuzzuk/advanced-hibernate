@@ -7,6 +7,7 @@ import com.example.advancedhibernate.repo.TagRepo
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.transaction.TransactionSystemException
 import spock.lang.Specification
 
 @SpringBootTest
@@ -65,6 +66,17 @@ class PostServiceImplSpec extends Specification {
 
         then:
         foundPost.tags.size() == 2
+    }
+
+    def "check validation"() {
+        given:
+        Post post = createPost('A')
+
+        when:
+        postRepo.save(post)
+
+        then:
+        thrown TransactionSystemException
     }
 
     private static Post createPost(String value = 'Post') {

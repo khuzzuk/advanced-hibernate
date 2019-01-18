@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Getter
@@ -29,7 +30,7 @@ public class Post extends BaseEntity {
     private Long id;
     @Version
     private Long version;
-    private String post;
+    private @Size(min = 5) String post;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(schema = "posting",
             name = "post_tag",
