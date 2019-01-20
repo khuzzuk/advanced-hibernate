@@ -36,6 +36,8 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.3.7.Final'
     compile group: 'org.ehcache', name: 'ehcache', version: '3.6.3'
     compile group: 'org.hibernate', name: 'hibernate-search-orm', version: '5.11.0.Final'
+    compile group: 'org.hibernate.ogm', name: 'hibernate-ogm-mongodb', version: '5.4.1.Final'
+
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
     runtimeOnly('org.postgresql:postgresql')
     compileOnly('org.projectlombok:lombok')

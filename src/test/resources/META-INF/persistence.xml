@@ -65,4 +65,15 @@
             <property name="hibernate.generate_statistics" value="true"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="jndi.mongodb.posts">
+        <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+        <class>com.example.advancedhibernate.db.Post</class>
+        <class>com.example.advancedhibernate.db.Tag</class>
+        <class>com.example.advancedhibernate.db.Message</class>
+        <properties>
+            <property name="hibernate.ogm.datastore.database" value="test"/>
+            <property name="hibernate.ogm.datastore.host" value="localhost"/>
+            <property name="hibernate.ogm.datastore.provider" value="MONGODB"/>
+        </properties>
+    </persistence-unit>
 </persistence>
